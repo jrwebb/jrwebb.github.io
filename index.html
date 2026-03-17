@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>James Milne — Product Leader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --cream-dark: #ede7d9;
+      --ink: #1a1714;
+      --ink-mid: #3d3830;
+      --ink-light: #7a7268;
+      --red: #c0392b;
+      --red-dark: #922b21;
+      --rule: #c8bfb0;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'EB Garamond', Georgia, serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 18px; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--red); }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 56px;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+
+    .hero-left {
+      padding: clamp(3rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--rule);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25em;
+    }
+
+    .hero-name span {
+      display: block;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-style: italic;
+      color: var(--ink-mid);
+      margin-bottom: 2.5rem;
+      border-left: 3px solid var(--red);
+      padding-left: 1rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+      max-width: 44ch;
+      margin-bottom: 3rem;
+      line-height: 1.75;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--red); }
+
+    .btn-secondary {
+      display: inline-block;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--red); color: var(--red); }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(3rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Abstract editorial graphic — stacked rule lines */
+    .hero-graphic {
+      position: absolute;
+      top: 15%;
+      right: -2rem;
+      width: 70%;
+      opacity: 0.08;
+    }
+
+    .hero-graphic line {
+      stroke: var(--ink);
+      stroke-width: 1;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: auto;
+    }
+
+    .stat {
+      background: var(--cream-dark);
+      padding: 1.5rem;
+      border: 1px solid var(--rule);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    .hero-quote {
+      margin-top: 2px;
+      padding: 1.5rem;
+      background: var(--ink);
+      color: var(--cream);
+      grid-column: 1 / -1;
+    }
+
+    .hero-quote p {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* ── SECTION COMMONS ── */
+    section {
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      white-space: nowrap;
+    }
+
+    .section-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      border-top: 1px solid var(--rule);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+    }
+
+    .about-body p {
+      font-size: 1.1rem;
+      color: var(--ink-mid);
+      margin-bottom: 1.25rem;
+      line-height: 1.8;
+    }
+
+    .about-body p:first-of-type::first-letter {
+      font-family: var(--font-display);
+      font-size: 3.8rem;
+      font-weight: 900;
+      float: left;
+      line-height: 0.8;
+      margin-right: 0.1em;
+      margin-top: 0.1em;
+      color: var(--ink);
+    }
+
+    .about-sidebar {
+      position: sticky;
+      top: 80px;
+    }
+
+    .sidebar-card {
+      border: 1px solid var(--rule);
+      padding: 1.75rem;
+      margin-bottom: 1rem;
+      background: var(--cream-dark);
+    }
+
+    .sidebar-card h4 {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .sidebar-card ul {
+      list-style: none;
+    }
+
+    .sidebar-card ul li {
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sidebar-card ul li:last-child { border-bottom: none; }
+
+    .sidebar-card ul li::before {
+      content: '—';
+      color: var(--red);
+      font-size: 0.8rem;
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience {
+      background: var(--ink);
+      color: var(--cream);
+      border-top: 4px solid var(--red);
+    }
+
+    #experience .section-label { color: var(--red); }
+    #experience .section-rule::after { background: #3d3830; }
+    #experience .section-heading { color: var(--cream); }
+
+    .timeline {
+      position: relative;
+      padding-left: 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: #3d3830;
+    }
+
+    .timeline-item {
+      padding-left: 2.5rem;
+      padding-bottom: 3.5rem;
+      position: relative;
+      border-left: 1px solid #3d3830;
+      margin-left: 1px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 0.4rem;
+      width: 7px;
+      height: 7px;
+      background: var(--red);
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .timeline-period {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .timeline-org {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: #7a7268;
+    }
+
+    .timeline-role {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .timeline-desc {
+      font-size: 0.95rem;
+      color: #asa79e;
+      line-height: 1.75;
+      max-width: 70ch;
+      color: #b5ad9f;
+    }
+
+    .timeline-achievement {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid #3d3830;
+      color: #7a7268;
+    }
+
+    .tag-highlight {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    /* ── WRITING ── */
+    #writing {
+      border-top: 1px solid var(--rule);
+    }
+
+    .writing-intro {
+      max-width: 60ch;
+      font-size: 1.1rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .writing-masthead {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 3rem clamp(1.5rem, 4vw, 4rem);
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .masthead-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .masthead-sub {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-top: 0.5rem;
+    }
+
+    .masthead-cta {
+      display: inline-block;
+      border: 1px solid #3d3830;
+      color: var(--cream);
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .masthead-cta:hover { background: var(--red); border-color: var(--red); }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .post-card {
+      background: var(--cream);
+      padding: 2rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: background 0.2s;
+    }
+
+    .post-card:hover { background: var(--cream-dark); }
+
+    .post-tag {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+
+    .post-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+
+    .post-excerpt {
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--cream-dark);
+      border-top: 1px solid var(--rule);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+    }
+
+    .contact-body p {
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 1.25rem 1.5rem;
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      transition: all 0.2s;
+    }
+
+    .contact-link:hover { border-color: var(--red); color: var(--red); }
+
+    .contact-link-icon {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--red);
+      min-width: 3rem;
+    }
+
+    .contact-link-text {
+      font-size: 0.95rem;
+    }
+
+    .contact-availability {
+      padding: 2rem;
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .avail-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+
+    .avail-status {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+
+    .avail-detail {
+      font-size: 0.9rem;
+      color: #b5ad9f;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-light);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow  { animation: fadeUp 0.6s ease both; }
+    .hero-name     { animation: fadeUp 0.6s 0.1s ease both; }
+    .hero-title    { animation: fadeUp 0.6s 0.2s ease both; }
+    .hero-desc     { animation: fadeUp 0.6s 0.3s ease both; }
+    .hero-cta      { animation: fadeUp 0.6s 0.4s ease both; }
+    .hero-stats    { animation: fadeUp 0.6s 0.5s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { border-top: 1px solid var(--rule); padding-top: 3rem; }
+      .hero-left { border-right: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-sidebar { position: static; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .writing-masthead { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">James Milne</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Group Product Manager · Brighton, UK</p>
+      <h1 class="hero-name">
+        James<br>
+        <span>Milne</span>
+      </h1>
+      <p class="hero-title">Product leader. Subscriber growth strategist. Occasional cyclist.</p>
+      <p class="hero-desc">
+        15+ years leading product at the FT, BBC, and The Economist. I build things that make subscribers stay — and keep companies growing. I write about what product leadership looks like from the long view.
+      </p>
+      <div class="hero-cta">
+        <a href="#experience" class="btn-primary">View my work</a>
+        <a href="#contact" class="btn-secondary">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <!-- Abstract editorial lines -->
+      <svg class="hero-graphic" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="#1a1714" stroke-width="1" fill="none" opacity="1">
+          <line x1="0" y1="40" x2="400" y2="40"/>
+          <line x1="0" y1="80" x2="400" y2="80"/>
+          <line x1="0" y1="120" x2="400" y2="120"/>
+          <line x1="0" y1="200" x2="400" y2="200"/>
+          <line x1="0" y1="204" x2="400" y2="204"/>
+          <line x1="0" y1="208" x2="400" y2="208"/>
+          <line x1="0" y1="280" x2="400" y2="280"/>
+          <line x1="0" y1="320" x2="400" y2="320"/>
+          <line x1="0" y1="400" x2="400" y2="400"/>
+          <line x1="0" y1="440" x2="400" y2="440"/>
+          <line x1="0" y1="480" x2="400" y2="480"/>
+          <line x1="0" y1="520" x2="400" y2="520"/>
+          <line x1="0" y1="560" x2="400" y2="560"/>
+          <rect x="0" y="160" width="180" height="36" fill="#1a1714" opacity="0.9"/>
+          <rect x="200" y="240" width="200" height="36" fill="#c0392b" opacity="0.9"/>
+          <rect x="0" y="360" width="280" height="36" fill="#1a1714" opacity="0.6"/>
+        </g>
+      </svg>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Years product leadership</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">£2.5M</div>
+          <div class="stat-label">Incremental ARR at the FT</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">73%</div>
+          <div class="stat-label">Subscriber adoption, myFT</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Major media orgs led</div>
+        </div>
+        <div class="hero-quote">
+          <p>"The gap between strategy and outcome is almost always a product problem."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-rule">
+      <span class="section-label">About</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-body">
+        <h2 class="section-heading">Building products<br><em>that earn loyalty</em></h2>
+        <p>
+          I've spent fifteen years inside some of the world's most respected media organisations — the Financial Times, the BBC, and The Economist — leading product teams that work at the intersection of editorial ambition and subscription economics. The common thread: I help organisations turn readers into subscribers, and subscribers into advocates.
+        </p>
+        <p>
+          As Product Director at the Financial Times, I scaled myFT — the platform's personalisation engine — from 2% to 73% subscriber adoption and built the community pillar that connected live events with the digital subscription. Both moved revenue. Both required working across the grain of large organisations to get done.
+        </p>
+        <p>
+          I think about product through the lens of long distances. Cycling teaches you that sustainable pace beats heroic bursts, that the rider who conserves energy on the flats has more to give on the climbs, and that the map matters less than knowing the terrain. The same is true in product leadership — and it's what I write about in <em>The Long Loop</em>.
+        </p>
+        <p>
+          I'm currently exploring senior product leadership and GPM roles, as well as select consulting and contract engagements where I can make a meaningful difference quickly.
+        </p>
+      </div>
+      <div class="about-sidebar">
+        <div class="sidebar-card">
+          <h4>Core expertise</h4>
+          <ul>
+            <li>Subscription growth &amp; retention</li>
+            <li>Personalisation systems</li>
+            <li>Mobile product strategy</li>
+            <li>Cross-functional team leadership</li>
+            <li>Product-led growth</li>
+            <li>Engagement &amp; lifecycle</li>
+          </ul>
+        </div>
+        <div class="sidebar-card">
+          <h4>Currently open to</h4>
+          <ul>
+            <li>GPM / VP Product roles</li>
+            <li>Senior IC product leadership</li>
+            <li>Strategic consulting</li>
+            <li>Contract PM engagements</li>
+          </ul>
+        </div>
+        <div class="sidebar-card">
+          <h4>Location</h4>
+          <ul>
+            <li>Brighton, UK</li>
+            <li>London (≤3 days p/w)</li>
+            <li>Remote-friendly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-rule">
+      <span class="section-label">Experience</span>
+    </div>
+    <h2 class="section-heading">Where I've worked,<br><em>what I've moved</em></h2>
+
+    <div class="timeline" style="margin-top: 3rem;">
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-period">2022 — 2025</span>
+          <span class="timeline-org">The Economist</span>
+        </div>
+        <div class="timeline-role">Group Product Manager — Customer Lifecycle</div>
+        <p class="timeline-desc">
+          Led four PMs across mobile apps, engagement, and retention for one of the world's most prestigious subscription brands. Delivered a native mobile app rebuild achieving 19% satisfaction uplift and 6% engagement uplift. Developed apps customer strategy and drove cross-functional initiatives in games, personalisation, and subscriber engagement. Navigated a complex stakeholder environment balancing editorial values with product velocity.
+        </p>
+        <div class="timeline-achievement">
+          <span class="tag tag-highlight">19% satisfaction uplift</span>
+          <span class="tag tag-highlight">6% engagement uplift</span>
+          <span class="tag">Native app rebuild</span>
+          <span class="tag">4 PMs led</span>
+          <span class="tag">Personalisation</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-period">2012 — 2022</span>
+          <span class="timeline-org">Financial Times</span>
+        </div>
+        <div class="timeline-role">Product Director (and Senior PM)</div>
+        <p class="timeline-desc">
+          A decade at the FT, progressing from Senior PM to Product Director overseeing 8–10 product teams. Scaled myFT personalisation from 2% to 73% subscriber adoption, generating £2.5M incremental ARR. Built the Community Pillar connecting FT Live events with the subscription platform — delivering 11.7% renewal uplift and 10x event registration growth. Turned around a loss-making markets data product to contribute £1M+ annually. Contributed to 23% revenue uplift across the £114M business.
+        </p>
+        <div class="timeline-achievement">
+          <span class="tag tag-highlight">£2.5M incremental ARR</span>
+          <span class="tag tag-highlight">73% myFT adoption</span>
+          <span class="tag tag-highlight">11.7% renewal uplift</span>
+          <span class="tag">8–10 teams</span>
+          <span class="tag">£114M business</span>
+          <span class="tag">Reforge trained</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <span class="timeline-period">Earlier</span>
+          <span class="timeline-org">BBC</span>
+        </div>
+        <div class="timeline-role">Product</div>
+        <p class="timeline-desc">
+          Built product foundations at the BBC — one of the world's most complex and beloved media organisations — working across editorial, technology, and audience teams.
+        </p>
+        <div class="timeline-achievement">
+          <span class="tag">Editorial product</span>
+          <span class="tag">Public service media</span>
+          <span class="tag">Cross-functional</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WRITING -->
+  <section id="writing">
+    <div class="section-rule">
+      <span class="section-label">Writing</span>
+    </div>
+    <p class="writing-intro">
+      I write <em>The Long Loop</em> — a newsletter drawing on cycling metaphors to examine what it means to lead product teams over the long haul. Strategy, pace, terrain, and the view from the back of the peloton.
+    </p>
+
+    <div class="writing-masthead">
+      <div>
+        <div class="masthead-name">The Long Loop</div>
+        <div class="masthead-sub">Product leadership · The long view · Published on Substack</div>
+      </div>
+      <a href="https://substack.com/@jmilne" target="_blank" rel="noopener" class="masthead-cta">Subscribe →</a>
+    </div>
+
+    <div class="posts-grid">
+      <a href="#" class="post-card">
+        <div class="post-tag">Leadership</div>
+        <div class="post-title">Managing distributed teams across chronotypes</div>
+        <div class="post-excerpt">What a peloton teaches you about managing people who work at different times — and why the solution isn't everyone riding in sync.</div>
+      </a>
+      <a href="#" class="post-card">
+        <div class="post-tag">Strategy</div>
+        <div class="post-title">The gap between discovery and delivery</div>
+        <div class="post-excerpt">In a feature factory environment, how do you protect space for the thinking that matters? Lessons from the Dolomites.</div>
+      </a>
+      <a href="#" class="post-card">
+        <div class="post-tag">Craft</div>
+        <div class="post-title">Why the best PMs conserve energy on the flats</div>
+        <div class="post-excerpt">Sustainable pace over heroic sprints. What long-distance cycling taught me about product leadership.</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-rule">
+      <span class="section-label">Contact</span>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-body">
+        <h2 class="section-heading">Let's talk about<br><em>what you're building</em></h2>
+        <p>
+          I'm open to senior product leadership roles, consulting engagements, and conversations about what good product looks like in subscription media. If you're working on something interesting — or if you just want to discuss the state of product leadership in media — I'd love to hear from you.
+        </p>
+        <p>
+          I'm based in Brighton and work in London up to three days a week. Open to remote-first teams with genuine flexibility.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:hello@jamesmilne.com" class="contact-link">
+            <span class="contact-link-icon">Email</span>
+            <span class="contact-link-text">hello@jamesmilne.com</span>
+          </a>
+          <a href="https://linkedin.com/in/jamesmilne" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon">LinkedIn</span>
+            <span class="contact-link-text">linkedin.com/in/jamesmilne</span>
+          </a>
+          <a href="https://substack.com/@jmilne" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon">Substack</span>
+            <span class="contact-link-text">The Long Loop</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="contact-availability">
+          <div class="avail-label">Current availability</div>
+          <div class="avail-status">Open to opportunities</div>
+          <p class="avail-detail">
+            Actively exploring senior PM and GPM roles in subscription media, health, and tech. Also available for strategic consulting and contract engagements. Response time: usually within a working day.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">James Milne</span>
+    <span class="footer-copy">© 2025 · Brighton, UK · Product leader · jamesmilne.com</span>
+  </footer>
+
+</body>
+</html>
