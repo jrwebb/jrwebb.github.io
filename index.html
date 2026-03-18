@@ -182,12 +182,16 @@
     .btn-secondary:hover { border-color: var(--red); color: var(--red); }
 
     .hero-right {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: clamp(3rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
       position: relative;
       overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
     }
 
 
@@ -701,7 +705,7 @@
       <h1 class="hero-name">
         James Webb</span>
       </h1>
-      <p class="hero-title">Digital Product leader. Subscriber growth strategist. Cycling bore.</p>
+      <p class="hero-title">Digital Product leader. Subscription products. Cycling.</p>
       <p class="hero-desc">
         15+ years leading product at The Economist, The Financial Times, and BBC. I build things that make subscribers stay — and keep companies growing. I occasionally write about leading in product management over on substack.
       </p>
@@ -711,7 +715,9 @@
       </div>
     </div>
 
-    <div class="hero-right"></div>
+    <div class="hero-right">
+      <img src="IMG_8588.jpeg" alt="Winding mountain road — Sa Calobra, Mallorca" />
+    </div>
   </section>
 
   <!-- ABOUT -->
