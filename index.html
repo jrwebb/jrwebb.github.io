@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>James Webb — Digital Product Lead</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,11 +52,18 @@
       z-index: 50;
       background: rgba(245, 240, 232, 1);
       border-bottom: 1px solid var(--rule);
-      padding: env(safe-area-inset-top) clamp(1.5rem, 5vw, 4rem) 0;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      padding-top: env(safe-area-inset-top);
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: calc(56px + env(safe-area-inset-top));
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    @supports (-webkit-touch-callout: none) {
+      nav { background: rgba(245, 240, 232, 1); }
     }
 
     .nav-logo {
@@ -88,8 +95,8 @@
 
     /* ── HERO ── */
     .hero {
-      padding-top: calc(56px + env(safe-area-inset-top));
-      min-height: 100svh;
+      padding-top: 56px;
+      min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
       position: relative;
@@ -244,7 +251,6 @@
     /* ── SECTION COMMONS ── */
     section {
       padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
-      scroll-margin-top: calc(56px + env(safe-area-inset-top));
     }
 
     .section-rule {
@@ -849,7 +855,7 @@
     <div class="writing-masthead">
       <div>
         <div class="masthead-name">The Long Loop</div>
-        <div class="masthead-sub">Product leadership · Executing well · Published on Substack</div>
+        <div class="masthead-sub">Product leadership · Substack</div>
       </div>
       <a href="https://thelongloop.substack.com/" target="_blank" rel="noopener" class="masthead-cta">Subscribe →</a>
     </div>
@@ -882,7 +888,7 @@
       <div class="contact-body">
         <h2 class="section-heading">Let's talk about<br><em>what you're building</em></h2>
         <p>
-          I'm open to senior product leadership roles, interim roles, consulting, and conversations about what good product looks like in subscription businesses. What might that mean for you?
+          I'm open to senior product leadership roles across mobile apps and web. I'm flexible on the type of contract interim roles, consulting, and conversations about what good product looks like in subscription businesses. What might that mean for you?
         </p>
         <p><b>Improving onboarding</b> so that you optimise for the biggest opportunities for both sign-up conversion and long-term retention.</p>
 <p><b>Assisting with AI automation</b> and workflow improvements to save your teams time</p>
@@ -896,16 +902,9 @@
           I'm based in Brighton and work in London up to three days a week. Very open to remote-first teams with genuine flexibility.
         </p>
         <div class="contact-links">
-          <a href="/cdn-cgi/l/email-protection#d1a8bea4a391b4bcb0b8bdffb2bebc" class="contact-link">
-  <span class="contact-link-icon">Email</span>
-  <span class="contact-link-text"><span class="__cf_email__" data-cfemail="a9c3dbdecccbcbe9c4cc87cac6c4">[email&#160;protected]</span></span>
-</a>
           <a href="https://linkedin.com/in/jrwebb" target="_blank" rel="noopener" class="contact-link">
             <span class="contact-link-icon">LinkedIn</span>
             <span class="contact-link-text">jrwebb</span>
           </a>
-          <a href="https://thelongloop.substack.com/" target="_blank" rel="noopener" class="contact-link">
-            <span class="contact-link-icon">Substack</span>
-            <span class="contact-link-text">The Long Loop</span>
-          </a>
+        
      
