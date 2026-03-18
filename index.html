@@ -95,7 +95,7 @@
 
     /* ── HERO ── */
     .hero {
-      padding-top: 56px;
+      padding-top: calc(56px + env(safe-area-inset-top));
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -246,6 +246,11 @@
       font-style: italic;
       font-size: 1.05rem;
       line-height: 1.6;
+    }
+
+    /* ── SCROLL OFFSET FOR FIXED NAV ── */
+    section[id] {
+      scroll-margin-top: calc(56px + env(safe-area-inset-top));
     }
 
     /* ── SECTION COMMONS ── */
