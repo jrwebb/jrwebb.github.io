@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>James Webb — Digital Product Lead</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,18 +52,11 @@
       z-index: 50;
       background: rgba(245, 240, 232, 1);
       border-bottom: 1px solid var(--rule);
-      padding: 0 clamp(1.5rem, 5vw, 4rem);
-      padding-top: env(safe-area-inset-top);
+      padding: env(safe-area-inset-top) clamp(1.5rem, 5vw, 4rem) 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: calc(56px + env(safe-area-inset-top));
-      -webkit-backdrop-filter: none;
-      backdrop-filter: none;
-    }
-
-    @supports (-webkit-touch-callout: none) {
-      nav { background: rgba(245, 240, 232, 1); }
     }
 
     .nav-logo {
@@ -96,7 +89,7 @@
     /* ── HERO ── */
     .hero {
       padding-top: calc(56px + env(safe-area-inset-top));
-      min-height: 100vh;
+      min-height: 100svh;
       display: grid;
       grid-template-columns: 1fr 1fr;
       position: relative;
@@ -248,14 +241,10 @@
       line-height: 1.6;
     }
 
-    /* ── SCROLL OFFSET FOR FIXED NAV ── */
-    section[id] {
-      scroll-margin-top: calc(56px + env(safe-area-inset-top));
-    }
-
     /* ── SECTION COMMONS ── */
     section {
       padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+      scroll-margin-top: calc(56px + env(safe-area-inset-top));
     }
 
     .section-rule {
