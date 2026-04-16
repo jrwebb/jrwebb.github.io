@@ -7,23 +7,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <!-- Favicon: JW initials -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23010D00'/%3E%3Ctext x='50%25' y='50%25' font-family='Georgia,serif' font-size='13' font-weight='700' fill='%23A65E4E' text-anchor='middle' dominant-baseline='central'%3EJW%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23262626'/%3E%3Ctext x='50%25' y='50%25' font-family='Georgia,serif' font-size='13' font-weight='700' fill='%23D92B3A' text-anchor='middle' dominant-baseline='central'%3EJW%3C/text%3E%3C/svg%3E" />
   <style>
     :root {
-      --cream: #f0f4f7;
-      --cream-dark: #dde6ed;
-      --ink: #010D00;
-      --ink-mid: #733E32;
-      --ink-light: #8EA8BF;
-      --red: #f5946aff;
-      --red-dark: #733E32;
-      --rule: #B0C6D9;
-      --teal: #8EA8BF;
-      --gold: #B0C6D9;
+      --red:        #D92B3A;
+      --red-dark:   #A6142F;
+      --grey:       #878A8C;
+      --off-white:  #F2F2F2;
+      --near-black: #262626;
+      --white:      #ffffff;
+      --rule:       #e0e0e0;
+      --rule-dark:  #A6142F;
       --font-display: 'Playfair Display', Georgia, serif;
-      --font-body: 'EB Garamond', Georgia, serif;
-      --font-mono: 'DM Mono', monospace;
+      --font-body:    'EB Garamond', Georgia, serif;
+      --font-mono:    'DM Mono', monospace;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,39 +28,27 @@
     html { scroll-behavior: smooth; font-size: 18px; }
 
     body {
-      background: #dde6ed;
-      color: var(--ink);
+      background: var(--off-white);
+      color: var(--near-black);
       font-family: var(--font-body);
       line-height: 1.7;
       overflow-x: hidden;
     }
 
-    /* ── PAGE WRAPPER ── */
     .page-wrap {
       max-width: 75rem;
       margin: 0 auto;
-      background: var(--cream);
+      background: var(--white);
       box-shadow: 0 0 80px rgba(0,0,0,0.08);
       position: relative;
     }
 
-    /* ── NOISE TEXTURE OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 100;
-      opacity: 0.03;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    /* ── NAVIGATION ── */
+    /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(240, 244, 247, 1);
+      background: rgba(255,255,255,0.97);
       border-bottom: 1px solid var(--rule);
       padding: 0 clamp(1.5rem, 5vw, 4rem);
       display: flex;
@@ -77,7 +62,7 @@
       font-weight: 700;
       font-size: 1rem;
       letter-spacing: 0.02em;
-      color: var(--ink);
+      color: var(--near-black);
       text-decoration: none;
     }
 
@@ -92,7 +77,7 @@
       font-size: 0.65rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--ink-mid);
+      color: var(--grey);
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -131,6 +116,7 @@
       line-height: 1;
       letter-spacing: -0.02em;
       margin-bottom: 0.25em;
+      color: var(--near-black);
     }
 
     .hero-name span {
@@ -143,7 +129,7 @@
       font-family: var(--font-display);
       font-size: clamp(1.1rem, 2vw, 1.4rem);
       font-style: italic;
-      color: var(--ink-mid);
+      color: var(--grey);
       margin-bottom: 2.5rem;
       border-left: 3px solid var(--red);
       padding-left: 1rem;
@@ -151,7 +137,7 @@
 
     .hero-desc {
       font-size: 1.05rem;
-      color: var(--ink-mid);
+      color: var(--grey);
       max-width: 44ch;
       margin-bottom: 3rem;
       line-height: 1.75;
@@ -165,8 +151,8 @@
 
     .btn-primary {
       display: inline-block;
-      background: var(--ink);
-      color: var(--cream);
+      background: var(--near-black);
+      color: var(--white);
       font-family: var(--font-mono);
       font-size: 0.65rem;
       letter-spacing: 0.14em;
@@ -180,8 +166,8 @@
 
     .btn-secondary {
       display: inline-block;
-      border: 1px solid var(--ink);
-      color: var(--ink);
+      border: 1px solid var(--near-black);
+      color: var(--near-black);
       font-family: var(--font-mono);
       font-size: 0.65rem;
       letter-spacing: 0.14em;
@@ -206,8 +192,6 @@
       display: block;
     }
 
-
-
     .hero-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -216,7 +200,7 @@
     }
 
     .stat {
-      background: var(--cream-dark);
+      background: var(--off-white);
       padding: 1.5rem;
       border: 1px solid var(--rule);
     }
@@ -226,7 +210,7 @@
       font-size: 2.2rem;
       font-weight: 900;
       line-height: 1;
-      color: var(--ink);
+      color: var(--near-black);
       margin-bottom: 0.25rem;
     }
 
@@ -235,14 +219,14 @@
       font-size: 0.6rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--ink-light);
+      color: var(--grey);
     }
 
     .hero-quote {
       margin-top: 2px;
       padding: 1.5rem;
-      background: var(--ink);
-      color: var(--cream);
+      background: var(--near-black);
+      color: var(--white);
       grid-column: 1 / -1;
     }
 
@@ -288,11 +272,13 @@
       line-height: 1.15;
       letter-spacing: -0.01em;
       margin-bottom: 1.5rem;
+      color: var(--near-black);
     }
 
     /* ── ABOUT ── */
     #about {
       border-top: 1px solid var(--rule);
+      background: var(--white);
     }
 
     .about-grid {
@@ -304,7 +290,7 @@
 
     .about-body p {
       font-size: 1.1rem;
-      color: var(--ink-mid);
+      color: #444;
       margin-bottom: 1.25rem;
       line-height: 1.8;
     }
@@ -318,7 +304,7 @@
       border: 1px solid var(--rule);
       padding: 1.75rem;
       margin-bottom: 1rem;
-      background: var(--cream-dark);
+      background: var(--off-white);
     }
 
     .sidebar-card h4 {
@@ -326,17 +312,15 @@
       font-size: 0.6rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--ink-light);
+      color: var(--grey);
       margin-bottom: 0.75rem;
     }
 
-    .sidebar-card ul {
-      list-style: none;
-    }
+    .sidebar-card ul { list-style: none; }
 
     .sidebar-card ul li {
       font-size: 0.95rem;
-      color: var(--ink-mid);
+      color: #444;
       padding: 0.3rem 0;
       border-bottom: 1px solid var(--rule);
       display: flex;
@@ -352,36 +336,159 @@
       font-size: 0.8rem;
     }
 
-    /* ── EXPERIENCE ── */
+    /* ── IMAGE CAROUSEL ── */
+    #carousel-section {
+      padding: 0;
+      background: var(--off-white);
+      border-top: 1px solid var(--rule);
+      border-bottom: 4px solid var(--red);
+    }
+
+    .carousel-header {
+      padding: 2.5rem clamp(1.5rem, 5vw, 4rem) 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .carousel-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .carousel-label-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+      padding: 2rem clamp(1.5rem, 5vw, 4rem) 2.5rem;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 1.5rem;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      flex: 0 0 calc(33.333% - 1rem);
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--near-black);
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .carousel-slide:hover img {
+      transform: scale(1.03);
+    }
+
+    .carousel-slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(38,38,38,0.85));
+      color: var(--white);
+      padding: 1.5rem 1rem 0.9rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .carousel-slide:hover .carousel-slide-caption {
+      opacity: 1;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding-bottom: 2rem;
+    }
+
+    .carousel-btn {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--near-black);
+      background: transparent;
+      color: var(--near-black);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all 0.2s;
+      font-family: var(--font-mono);
+    }
+
+    .carousel-btn:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--rule);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--red);
+      width: 24px;
+    }
+
+    /* ── EXPERIENCE (dark) ── */
     #experience {
-      background: var(--ink);
-      color: var(--cream);
-      border-top: 4px solid var(--teal);
+      background: var(--near-black);
+      color: var(--white);
+      border-top: 4px solid var(--red-dark);
     }
 
     #experience .section-label { color: var(--red); }
-    #experience .section-rule::after { background: #733E32; }
-    #experience .section-heading { color: var(--cream); }
+    #experience .section-rule::after { background: var(--red-dark); }
+    #experience .section-heading { color: var(--white); }
 
     .timeline {
       position: relative;
       padding-left: 0;
     }
 
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0; bottom: 0;
-      width: 1px;
-      background: #733E32;
-    }
-
     .timeline-item {
       padding-left: 2.5rem;
       padding-bottom: 3.5rem;
       position: relative;
-      border-left: 1px solid #733E32;
+      border-left: 1px solid var(--red-dark);
       margin-left: 1px;
     }
 
@@ -417,14 +524,14 @@
       font-family: var(--font-mono);
       font-size: 0.65rem;
       letter-spacing: 0.08em;
-      color: #6a8aaa;
+      color: var(--white);
     }
 
     .timeline-role {
       font-family: var(--font-display);
       font-size: 1.4rem;
       font-weight: 700;
-      color: var(--cream);
+      color: var(--white);
       margin-bottom: 0.75rem;
       line-height: 1.2;
     }
@@ -433,7 +540,7 @@
       font-size: 1.05rem;
       line-height: 1.75;
       max-width: 70ch;
-      color: #8EA8BF;
+      color: var(--white);
     }
 
     .timeline-achievement {
@@ -450,8 +557,8 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       padding: 0.4rem 0.9rem;
-      border: 1px solid #733E32;
-      color: #6a8aaa;
+      border: 1px solid var(--red-dark);
+      color: var(--grey);
     }
 
     .tag-highlight {
@@ -462,19 +569,20 @@
     /* ── WRITING ── */
     #writing {
       border-top: 1px solid var(--rule);
+      background: var(--white);
     }
 
     .writing-intro {
       max-width: 60ch;
       font-size: 1.1rem;
-      color: var(--ink-mid);
+      color: #444;
       line-height: 1.8;
       margin-bottom: 3rem;
     }
 
     .writing-masthead {
-      background: var(--ink);
-      color: var(--cream);
+      background: var(--near-black);
+      color: var(--white);
       padding: 3rem clamp(1.5rem, 4vw, 4rem);
       margin-bottom: 2rem;
       display: grid;
@@ -503,8 +611,8 @@
 
     .masthead-cta {
       display: inline-block;
-      border: 1px solid #733E32;
-      color: var(--cream);
+      border: 1px solid var(--red-dark);
+      color: var(--white);
       font-family: var(--font-mono);
       font-size: 0.6rem;
       letter-spacing: 0.14em;
@@ -526,7 +634,7 @@
     }
 
     .post-card {
-      background: var(--cream);
+      background: var(--white);
       padding: 2rem;
       text-decoration: none;
       color: inherit;
@@ -534,7 +642,7 @@
       transition: background 0.2s;
     }
 
-    .post-card:hover { background: var(--cream-dark); }
+    .post-card:hover { background: var(--off-white); }
 
     .post-tag {
       font-family: var(--font-mono);
@@ -551,27 +659,18 @@
       font-weight: 700;
       line-height: 1.3;
       margin-bottom: 0.75rem;
-      color: var(--ink);
+      color: var(--near-black);
     }
 
     .post-excerpt {
       font-size: 0.9rem;
-      color: var(--ink-light);
+      color: var(--grey);
       line-height: 1.7;
     }
 
-    .linkedin-logo {
-      display: inline-block;
-      margin-top: 1.5rem;
-      opacity: 0.85;
-      transition: opacity 0.2s;
-    }
-
-    .linkedin-logo:hover { opacity: 1; }
-
     /* ── CONTACT ── */
     #contact {
-      background: var(--cream-dark);
+      background: var(--off-white);
       border-top: 1px solid var(--rule);
     }
 
@@ -584,7 +683,7 @@
 
     .contact-body p {
       font-size: 1.05rem;
-      color: var(--ink-mid);
+      color: #444;
       line-height: 1.8;
       margin-bottom: 1.25rem;
     }
@@ -596,36 +695,19 @@
       margin-top: 2rem;
     }
 
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      text-decoration: none;
-      color: var(--ink);
-      padding: 1.25rem 1.5rem;
-      background: var(--cream);
-      border: 1px solid var(--rule);
-      transition: all 0.2s;
+    .linkedin-logo {
+      display: inline-block;
+      margin-top: 1.5rem;
+      opacity: 0.85;
+      transition: opacity 0.2s;
     }
 
-    .contact-link:hover { border-color: var(--red); color: var(--red); }
-
-    .contact-link-icon {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      color: var(--red);
-      min-width: 3rem;
-    }
-
-    .contact-link-text {
-      font-size: 0.95rem;
-    }
+    .linkedin-logo:hover { opacity: 1; }
 
     .contact-availability {
       padding: 2rem;
-      background: var(--ink);
-      color: var(--cream);
+      background: var(--near-black);
+      color: var(--white);
     }
 
     .avail-label {
@@ -647,7 +729,7 @@
 
     .avail-detail {
       font-size: 0.9rem;
-      color: #8EA8BF;
+      color: var(--grey);
       line-height: 1.7;
     }
 
@@ -660,19 +742,21 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
+      background: var(--white);
     }
 
     .footer-name {
       font-family: var(--font-display);
       font-weight: 700;
       font-size: 0.95rem;
+      color: var(--near-black);
     }
 
     .footer-copy {
       font-family: var(--font-mono);
       font-size: 0.58rem;
       letter-spacing: 0.1em;
-      color: var(--ink-light);
+      color: var(--grey);
     }
 
     /* ── ANIMATIONS ── */
@@ -691,17 +775,19 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-right { border-top: 1px solid var(--rule); padding-top: 0; height: 260px; }
+      .hero-right { border-top: 1px solid var(--rule); height: 260px; }
       .hero-left { border-right: none; }
       .about-grid { grid-template-columns: 1fr; }
       .about-sidebar { position: static; }
       .contact-grid { grid-template-columns: 1fr; }
       .writing-masthead { grid-template-columns: 1fr; }
+      .carousel-slide { flex: 0 0 calc(50% - 0.75rem); }
     }
 
     @media (max-width: 600px) {
       .nav-links { display: none; }
       .hero-stats { grid-template-columns: 1fr 1fr; }
+      .carousel-slide { flex: 0 0 calc(100% - 0rem); }
     }
   </style>
 </head>
@@ -724,7 +810,7 @@
     <div class="hero-left">
       <p class="hero-eyebrow">Digital Product Lead · London & South East, UK</p>
       <h1 class="hero-name">
-        James Webb</span>
+        James Webb
       </h1>
       <p class="hero-title">Digital Product Lead. Subscriptions Engagement and Retention.</p>
       <p class="hero-desc">
@@ -754,7 +840,7 @@
         </p>
         <p>I focus mostly on retention as it's where I believe the best companies separate themselves. Working across both feature and product level, I help teams build the habits that keep users active and extend lifetime value.</p>
         <p>
-          As Group Product Manager at the Financial Times, I scaled myFT from 2% to 73% subscriber adoption and later formed the community pillar that connected live events with digital subscriptions. Both moved revenue. Both required working across the grain of large organisations to get stuff done.
+          As Group Product Manager at the Financial Times, my teams scaled myFT from 2% to 73% subscriber adoption and later formed the community pillar that connected live events with digital subscriptions. Both moved revenue. Both required working across the grain of large organisations to get stuff done.
         </p>
         <p>
           I'm currently exploring senior product management roles, as well as select consulting and contract engagements where I can make a meaningful difference.
@@ -795,12 +881,57 @@
     </div>
   </section>
 
+  <!-- IMAGE CAROUSEL -->
+  <section id="carousel-section">
+    <div class="carousel-header">
+      <span class="carousel-label">Work</span>
+      <div class="carousel-label-rule"></div>
+    </div>
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="carouselTrack">
+        <!-- Slide 1: FT Devices -->
+        <div class="carousel-slide">
+          <img src="/images/FT_Devices-4_copy.png" alt="Financial Times — Cross-platform product" />
+          <div class="carousel-slide-caption">Financial Times — Cross-platform</div>
+        </div>
+        <!-- Slide 2: Economist Home -->
+        <div class="carousel-slide">
+          <img src="/images/EconomistHome.png" alt="The Economist — Mobile app" />
+          <div class="carousel-slide-caption">The Economist — Mobile app</div>
+        </div>
+        <!-- Slide 3: Crux -->
+        <div class="carousel-slide">
+          <img src="/images/Crux.png" alt="Crux — FT Knowledge Builder" />
+          <div class="carousel-slide-caption">FT Knowledge Builder</div>
+        </div>
+        <!-- Slides 4–6: duplicates for smooth looping feel (replace with real images as needed) -->
+        <div class="carousel-slide">
+          <img src="/images/FT_Devices-4_copy.png" alt="Financial Times — myFT personalisation" />
+          <div class="carousel-slide-caption">myFT Personalisation</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/EconomistHome.png" alt="The Economist — Engagement features" />
+          <div class="carousel-slide-caption">The Economist — Engagement</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/Crux.png" alt="FT — AI-powered features" />
+          <div class="carousel-slide-caption">FT — AI-powered features</div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="carouselPrev" aria-label="Previous">←</button>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <button class="carousel-btn" id="carouselNext" aria-label="Next">→</button>
+    </div>
+  </section>
+
   <!-- EXPERIENCE -->
   <section id="experience">
     <div class="section-rule">
       <span class="section-label">Experience</span>
     </div>
-    <h2 class="section-heading">Impact</em></h2>
+    <h2 class="section-heading">Impact</h2>
 
     <div class="timeline" style="margin-top: 3rem;">
 
@@ -811,7 +942,7 @@
         </div>
         <div class="timeline-role">Group Product Manager — Apps</div>
         <p class="timeline-desc">
-          Led three PMs across mobile apps, engagement, and retention for one of the world's most prestigious subscription brands used my 16m users globally. Delivered a native mobile app rebuild achieving 19% satisfaction uplift and 16% engagement uplift. Co-created an apps strategy and influenced cross-functional initiatives in games, personalisation, and subscriber engagement. Navigated a complex stakeholder environment balancing commercial goals against editorial values at pace. 
+          Led three PMs across mobile apps, engagement, and retention for one of the world's most prestigious subscription brands used by 16m users globally. Delivered a native mobile app rebuild achieving 19% satisfaction uplift and 16% engagement uplift. Co-created an apps strategy and influenced cross-functional initiatives in games, personalisation, and subscriber engagement. Navigated a complex stakeholder environment balancing commercial goals against editorial values at pace.
         </p>
         <div class="timeline-achievement">
           <span class="tag tag-highlight">Mobile app strategy</span>
@@ -825,9 +956,9 @@
           <span class="timeline-period">2012 — 2022</span>
           <span class="timeline-org">Financial Times</span>
         </div>
-        <div class="timeline-role">Product Director (and Senior PM)</div>
+        <div class="timeline-role">Product Director (started as Senior PM)</div>
         <p class="timeline-desc">
-          A decade at the FT, progressing from Senior PM to Product Director overseeing 8–10 product teams with a £7m budget. Scaled myFT personalisation from 2% to 73% subscriber adoption, generating £2.5M incremental ARR. Partnered with AI startup to secure £1m Google DNI funding, boosting subscriber engagement by 46%. Led a newly formed Community Pillar connecting FT Live events with the subscription platform — delivering 11.7% renewal uplift and 10x event registration growth. Turned around a loss-making markets data product to contribute £1.6M+ annually. 
+          A decade at the FT, progressing from Senior PM to Product Director overseeing 8–10 product teams with a £7m budget. Scaled myFT personalisation from 2% to 73% subscriber adoption, generating £2.5M incremental ARR. Partnered with AI startup to secure £1m Google DNI funding, boosting subscriber engagement by 46%. Led a newly formed Community Pillar connecting FT Live events with the subscription platform — delivering 11.7% renewal uplift and 10x event registration growth. Turned around a loss-making markets data product to contribute £1.6M+ annually.
         </p>
         <div class="timeline-achievement">
           <span class="tag tag-highlight">£2.5M incremental ARR</span>
@@ -844,13 +975,12 @@
         </div>
         <div class="timeline-role">Senior Product Manager</div>
         <p class="timeline-desc">
-          Over ten years at the BBC, I've built and led products across audience growth, editorial, and edtech. I founded the Audience Acquisition team, establishing SEO best practices and organic growth strategies across its digital properties — including setting the vision for BBC Comedy, which tripled monthly traffic. Earlier work spanned award-winning websites, including a behaviour-change tool for carbon reduction, and two video learning experiences for 14–16 year-olds as part of the £150m BBC Jam initiative.
+          Over ten years at the BBC, I built and led products across audience growth, editorial, and edtech. I founded the Audience Acquisition team, establishing SEO best practices and organic growth strategies across its digital properties — including setting the vision for BBC Comedy, which tripled monthly traffic. Earlier work spanned award-winning websites, including a behaviour-change tool for carbon reduction, and two video learning experiences for 14–16 year-olds as part of the £150m BBC Jam initiative.
         </p>
         <div class="timeline-achievement">
           <span class="tag tag-highlight">SEO Consultancy</span>
           <span class="tag">EdTech Games</span>
           <span class="tag">Lifestyle &amp; Consumer Products</span>
-          
         </div>
       </div>
 
@@ -863,9 +993,9 @@
       <span class="section-label">Writing</span>
     </div>
     <p class="writing-intro">
-      I write <em>The Long Loop</em> — an occasional newsletter drawing on cycling metaphors to examine what it means to lead product teams over the long haul. Strategy, pace, terrain. And an abundance of sweet snacks.
+      I occasionally write over on <em>The Long Loop</em> — a newsletter drawing on cycling metaphors to examine what it means to lead product teams over the long haul. Strategy, pace, terrain.
     </p>
-
+<!--
     <div class="writing-masthead">
       <div>
         <div class="masthead-name">The Long Loop</div>
@@ -873,19 +1003,19 @@
       </div>
       <a href="https://thelongloop.substack.com/" target="_blank" rel="noopener" class="masthead-cta">Subscribe →</a>
     </div>
-
+-->
     <div class="posts-grid">
-      <a href="#" class="post-card">
-        <div class="post-tag">Survivial tactics</div>
+      <a href="https://thelongloop.substack.com/p/service-is-temporarily-busy-one-message" class="post-card">
+        <div class="post-tag">Cognitive biases</div>
+        <div class="post-title">Service is temporarily busy." One message. Two very different reactions, depending on who sends it.</div>
+        <div class="post-excerpt">We’re not comparing AI and more traditional products through the same psychological lens. The first few times I couldn’t access Claude I shrugged. Refreshed. Or switched to ChatGPT or Gemini.</div>
+      </a>
+      <a href="https://thelongloop.substack.com/p/when-your-best-work-happens-matters" class="post-card">
+        <div class="post-tag">Survival tactics</div>
         <div class="post-title">When your best work happens matters more than you think</div>
         <div class="post-excerpt">Your chronotype is your superpower (if you use it right)</div>
       </a>
-      <a href="#" class="post-card">
-        <div class="post-tag"></div>
-        <div class="post-title"></div>
-        <div class="post-excerpt"></div>
-      </a>
-      <a href="#" class="post-card">
+      <a href="https://thelongloop.substack.com/p/the-community-canvas-a-framework" class="post-card">
         <div class="post-tag">Craft</div>
         <div class="post-title">The Community Canvas: A framework for building community products</div>
         <div class="post-excerpt">Building successful community products requires thinking beyond traditional product development. Communities are about relationships, shared value creation, and sustained engagement over time.</div>
@@ -905,13 +1035,11 @@
           I'm open to senior product leadership roles, interim roles, consulting, and conversations about what good product looks like in B2C subscription businesses. What might that mean for you?
         </p>
         <p><b>Improving onboarding journeys</b> so that you optimise for the biggest opportunities for activation and long-term retention.</p>
-<p><b>Assisting with AI automation</b> and workflow improvements to save your teams time</p>
-          <p><b>Identifying and removing friction</b> that may be holding your product back from reaching its full potential</p>
-<p><b>Feature performance deep dives</b> to highlight problems, missed opportunities and areas for improvement in the customer journeys to increase conversion, activation and retention revenue </p>
-<p><b>Identifying product-led strategies</b> that drive growth with a lower cost of acquisition through improved cross-functional collaboration</p>
-<p><b>Researching and analysing market trends</b>, competitor landscape, customer behaviours, and positioning to yield key insights that drive product roadmaps</p>
-
-          </p>
+        <p><b>Assisting with AI automation</b> and workflow improvements to save your teams time</p>
+        <p><b>Identifying and removing friction</b> that may be holding your product back from reaching its full potential</p>
+        <p><b>Feature performance deep dives</b> to highlight problems, missed opportunities and areas for improvement in the customer journeys to increase conversion, activation and retention revenue</p>
+        <p><b>Identifying product-led strategies</b> that drive growth with a lower cost of acquisition through improved cross-functional collaboration</p>
+        <p><b>Researching and analysing market trends</b>, competitor landscape, customer behaviours, and positioning to yield key insights that drive product roadmaps</p>
         <p>
           I'm based in Brighton and work in London up to three days a week. Very open to remote-first teams with genuine flexibility.
         </p>
@@ -942,5 +1070,90 @@
   </footer>
 
 </div><!-- /page-wrap -->
+
+<script>
+  (function() {
+    const track = document.getElementById('carouselTrack');
+    const dotsContainer = document.getElementById('carouselDots');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+
+    if (!track) return;
+
+    const slides = track.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+
+    // Determine how many slides visible at once based on screen width
+    function getSlidesVisible() {
+      if (window.innerWidth <= 600) return 1;
+      if (window.innerWidth <= 900) return 2;
+      return 3;
+    }
+
+    let currentIndex = 0;
+    let slidesVisible = getSlidesVisible();
+    const maxIndex = () => Math.max(0, totalSlides - slidesVisible);
+
+    // Build dots
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      slidesVisible = getSlidesVisible();
+      const dotCount = maxIndex() + 1;
+      for (let i = 0; i < dotCount; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === currentIndex ? ' active' : '');
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      const dots = dotsContainer.querySelectorAll('.carousel-dot');
+      dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+    }
+
+    function getSlideWidth() {
+      const slide = slides[0];
+      const style = window.getComputedStyle(track);
+      const gap = parseInt(style.gap || style.columnGap || '24', 10);
+      return slide.offsetWidth + gap;
+    }
+
+    function goTo(index) {
+      slidesVisible = getSlidesVisible();
+      currentIndex = Math.min(Math.max(index, 0), maxIndex());
+      const offset = currentIndex * getSlideWidth();
+      track.style.transform = `translateX(-${offset}px)`;
+      updateDots();
+    }
+
+    prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+    nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') goTo(currentIndex - 1);
+      if (e.key === 'ArrowRight') goTo(currentIndex + 1);
+    });
+
+    // Touch / swipe support
+    let touchStartX = 0;
+    track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? currentIndex + 1 : currentIndex - 1);
+    }, { passive: true });
+
+    // Rebuild on resize
+    window.addEventListener('resize', () => {
+      buildDots();
+      goTo(Math.min(currentIndex, maxIndex()));
+    });
+
+    buildDots();
+    goTo(0);
+  })();
+</script>
 </body>
 </html>
